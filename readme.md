@@ -22,7 +22,7 @@ Before you begin, ensure you have met the following requirements:
 - [ ]  You have generated API token from Hugging Face, Groq, OpenAI, Mistral.
 - [ ]  You might need to add credits for each platform if needed.
 
-## Installation
+## Run the Code
 
 To Run this project, follow these steps:
 
