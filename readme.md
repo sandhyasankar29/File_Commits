@@ -1,14 +1,54 @@
-Breaking Down Diffs: Can File-Wise Commit Message Generation Using LLMs Improve VCS Practices?
+# Automatic Commit Message Generation
 
-Commit messages play a crucial role in version control systems, providing essential context and explanations for changes made to the codebase. Despite their importance, many commit messages are poorly written or entirely missing, leading to challenges in code comprehension, bug tracking, and project maintenance. This paper addresses two significant issues in existing automated commit message generation approaches: the limitations of using datasets with short token lengths and the reliance on a single commit message for multiple file changes. To overcome these challenges, we generate commit messages for diffs with larger token lengths, using the latest LLMs, including GPT-4o, Llama 3.1 70B, Llama 3.1 8B, and Mistral Large. For evaluation, we conduct automatic assessments using metrics such as BLEU, ROUGE, METEOR, and CIDEr, as well as a human evaluation. Our findings indicate that GPT-4o and Llama 3.1 70B emerge as the best models for generating commit messages. Additionally, we propose a two-level approach that generates both an overall commit message and file-specific messages for each file change. To validate this approach, we surveyed developers to understand the problems they face with current commit messages and gather their feedback on our two-level approach. Our survey indicates that the two-level approach is effective and helps developers better understand complex and lengthy code diffs.
+## Overview
+This repository contains the code and resources for generating automated commit messages using state-of-the-art Large Language Models (LLMs), such as GPT-4o, Llama 3.1 (70B and 8B), and Mistral Large. The project addresses two significant challenges in automated commit message generation:
 
-To run the code
+**Limitations of short token lengths:** Many existing approaches rely on datasets with short token lengths, resulting in incomplete or oversimplified commit messages.
 
-You need to generate a API key for Hugging Face, Open AI, Mistral and Groq, given that the prerequisites to access models are available through the key.
+**Handling multiple file changes:** Current models often generate a single commit message for multiple file changes, making it difficult for developers to understand specific file modifications.
 
-Hugging Face: Mistral Tokenizer
-OpenAI: GPT4o
-Mistral: Mistral-Large
-Groq: Llama3.1 70B and 8B
 
-The code can be referred in SplitCommit.ipynb
+## Features
+- **LLM-powered commit message generation:** Leverages powerful models like GPT-4o, Llama 3.1, and Mistral Large to generate high-quality commit messages for large diffs.
+- **Two-level approach:** Generates both a high-level overall commit message and file-specific messages for each file change, providing more granular context for developers.
+- **Automatic evaluation metrics:** Uses BLEU, ROUGE, METEOR, and CIDEr metrics to automatically assess the quality of generated commit messages.
+- **Human evaluation:** Includes a developer survey to assess the effectiveness of the proposed approach.
+
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
+- [ ]  You must be running the code in an Unix based OS.
+- [ ]  You have downloaded and setup Python version >= 3.10.
+- [ ]  You took permission to use Mistral tokenizer in the Hugging Face platform.
+- [ ]  You have generated API token from Hugging Face, Groq, OpenAI, Mistral.
+- [ ]  You might need to add credits for each platform if needed.
+
+## Installation
+
+To Run this project, follow these steps:
+
+```bash
+# Clone the repository
+git clone https://github.com/sandhyasankar29/File_Commits.git
+
+# Navigate to the project directory
+cd File_Commits
+
+#Set up Virtual Environment
+python3 -m venv env
+
+#Activate the Environment
+source env/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+#Run the models - Replace Tokens with the Actual Data
+./run_all.sh Hugging_Face_Token Groq_Token OpenAI_Token Mistral_Token
+
+#To calculate Evaluation Scores
+!./run_evaluate.sh diff_output_1.csv diff_output_2.csv diff_output_3.csv diff_output_4.csv diff_output_5.csv
+
+```
+
+## Evaluation Results
+![Evaluation Results](Results/Automatic_Evaluation/Evaluation_Scores.png)
