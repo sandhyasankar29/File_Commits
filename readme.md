@@ -46,7 +46,7 @@ pip install -r requirements.txt
 ./run_all.sh Hugging_Face_Token Groq_Token OpenAI_Token Mistral_Token
 
 #To calculate Evaluation Scores
-!./run_evaluate.sh diff_output_1.csv diff_output_2.csv diff_output_3.csv diff_output_4.csv diff_output_5.csv
+./run_evaluate.sh diff_output_1.csv diff_output_2.csv diff_output_3.csv diff_output_4.csv diff_output_5.csv
 
 ```
 
